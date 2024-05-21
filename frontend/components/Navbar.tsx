@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import React from "react";
+import Button from "./Button";
 
 const Navbar = () => {
   return (
@@ -17,7 +18,9 @@ const Navbar = () => {
           <Link href="">DASHBOARD</Link>
         </li>
         <li>
-          <Link href="/">BEJELENTKEZÉS</Link>
+          <Link href="/">
+            <Button>BEJELENTKEZÉS</Button>
+          </Link>
         </li>
       </ul>
     </nav>
