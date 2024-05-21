@@ -2,7 +2,7 @@ import Link from "next/link";
 import Button from "../components/Button";
 import "../styles/globals.css";
 
-export default function Home() {
+export default function LoginPage() {
   return (
     <div className="login-container">
       <h1>BEJELENTKEZÉS</h1>

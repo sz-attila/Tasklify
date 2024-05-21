@@ -26,9 +26,9 @@ html {
 /* Navbar styles */
 nav {
   display: flex;
+  background-color: var(--other-color);
   justify-content: space-between;
   align-items: center;
-  background-color: var(--white-color);
   padding: 22px 200px 23px 200px;
 }
 
@@ -52,7 +52,7 @@ nav ul {
   list-style: none;
   display: flex;
   gap: 32px;
-  align-items: center; /* Ez hozzáadva a gomb igazításához */
+  align-items: center;
 }
 
 nav li {
@@ -101,7 +101,7 @@ nav a.button {
 }
 
 .login-container h1 {
-  font-weight: 700;
+  font-weight: 800;
   font-size: 24px;
   text-align: center;
   color: var(--text-color);
@@ -148,10 +148,11 @@ nav a.button {
 
 .submit-div button,
 .submit-div a.button {
-  padding: 0.75rem 1rem;
+  padding: 8px 24px 8px 24px;
+  height: 50px;
   font-size: 1rem;
   font-weight: 600;
-  border-radius: 0.25rem;
+  border-radius: 8px;
   width: 328px;
   text-align: center;
 }
@@ -192,10 +193,11 @@ nav a.button {
 
 .registration-link button,
 .registration-link a.button {
-  padding: 0.75rem 1rem;
+  padding: 8px 24px 8px 24px;
+  height: 50px;
   font-size: 1rem;
   font-weight: 600;
-  border-radius: 0.25rem;
+  border-radius: 8px;
   width: 328px;
   text-align: center;
 }
@@ -213,6 +215,45 @@ nav a.button {
 }
 
 .registration-link a.button {
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+/* Register page styles */
+
+.register-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin-top: 54px;
+}
+
+.register-div button,
+.register-div a.button {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  width: 328px;
+  text-align: center;
+}
+
+.register-div button {
+  border: none;
+  cursor: pointer;
+  color: var(--white-color);
+  background-color: var(--primary-color);
+}
+
+.register-div button:hover {
+  background-color: var(--green-color);
+}
+
+.register-div a.button {
   border: 2px solid var(--primary-color);
   color: var(--primary-color);
   background-color: transparent;
