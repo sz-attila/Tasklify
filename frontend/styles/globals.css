@@ -30,43 +30,73 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 22px 200px 23px 200px;
+  position: relative;
 }
 
-nav div {
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+  width: 100%;
+}
+
+.nav-logo {
   display: flex;
   align-items: center;
 }
 
-nav img {
+.nav-logo img {
   height: 50px;
   margin-right: 16px;
 }
 
-nav span {
+.nav-logo span {
   font-size: 22px;
   font-weight: 700;
   color: var(--text-color);
 }
 
-nav ul {
+.nav-menu-icon {
+  display: none;
+  cursor: pointer;
+}
+
+.nav-menu-icon img {
+  width: 30px;
+  height: 30px;
+}
+
+.nav-links {
   list-style: none;
   display: flex;
   gap: 32px;
   align-items: center;
+  margin-right: 50px;
 }
 
-nav li {
+.nav-links li {
   font-size: 16px;
   font-weight: 400;
 }
 
-nav a {
+.nav-links a {
   text-decoration: none;
   color: var(--text-color);
+  position: relative;
+  font-weight: 400;
 }
 
-nav button {
-  padding: 8px 24px 8px 24px;
+.nav-links a.active {
+  font-weight: bold;
+  text-decoration: underline var(--primary-color);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+
+nav .button {
+  padding: 8px 24px;
   height: 50px;
   font-size: 16px;
   font-weight: 600;
@@ -77,19 +107,88 @@ nav button {
   cursor: pointer;
   color: var(--white-color);
   background-color: var(--primary-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-nav button:hover {
+nav .button:hover {
   background-color: var(--green-color);
 }
 
-nav a.button {
-  border: 2px solid var(--primary-color);
-  color: var(--primary-color);
-  background-color: transparent;
-  text-decoration: none;
-}
+@media (max-width: 768px) {
+  nav {
+    padding: 22px 20px 0 20px;
+  }
 
+  .nav-container {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .nav-logo span {
+    margin-right: 128px;
+  }
+
+  .nav-menu-icon {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 80%;
+    left: 0;
+    width: 100%;
+    background-color: var(--other-color);
+    flex-direction: column;
+    align-items: flex-start;
+    display: none;
+    padding: 20px 0 20px 10px;
+  }
+
+  .nav-links.active {
+    display: flex;
+    background-color: #ccdbdb;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
+
+  .nav-links a {
+    padding-left: 20px;
+    color: var(--text-color);
+  }
+
+  .nav-links a.active {
+    bottom: -2px;
+  }
+
+  .nav-links button {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+  }
+
+  .nav-links button,
+  .nav-links .button {
+    padding: 8px 24px;
+    height: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    width: 328px;
+    text-align: center;
+  }
+
+  .nav-links button:hover {
+    background-color: var(--green-color);
+  }
+
+  nav.active {
+    background-color: var(--green-color);
+  }
+}
 /* Login page styles */
 .login-container {
   display: flex;
@@ -113,7 +212,6 @@ nav a.button {
   font-size: 16px;
   text-align: center;
   line-height: 24px;
-
   color: var(--text-color);
   margin: 16px 0 54px 0;
 }
