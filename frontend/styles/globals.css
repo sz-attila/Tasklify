@@ -117,6 +117,30 @@ nav .button:hover {
   background-color: var(--green-color);
 }
 
+nav .button-logout {
+  padding: 8px 24px;
+  height: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  gap: 8px;
+  border-radius: 8px;
+  width: 229px;
+  border: 2px solid var(--primary-color);
+  cursor: pointer;
+  color: var(--primary-color);
+  background-color: transparent;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav .button-logout:hover {
+  background-color: var(--green-color);
+  color: var(--white-color);
+  border-color: var(--green-color);
+}
+
 @media (max-width: 768px) {
   nav {
     padding: 22px 20px 0 20px;
@@ -144,7 +168,7 @@ nav .button:hover {
     flex-direction: column;
     align-items: flex-start;
     display: none;
-    padding: 20px 0 20px 10px;
+    padding: 20px 0 20px 0;
   }
 
   .nav-links.active {
@@ -152,32 +176,37 @@ nav .button:hover {
     background-color: #ccdbdb;
   }
 
-  .nav-links li {
-    margin: 10px 0;
-  }
-
-  .nav-links a {
-    padding-left: 20px;
+  .nav-links li a {
     color: var(--text-color);
+    padding: 30px;
+    width: 100%;
   }
 
-  .nav-links a.active {
-    bottom: -2px;
+  .nav-links .button-logout {
+    background-color: var(--white-color);
+    color: var(--primary-color);
   }
 
   .nav-links button {
     background-color: var(--primary-color);
     color: var(--white-color);
+    width: 100%;
+  }
+
+  .button-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 100%;
+    padding: 10px 30px 10px 30px;
   }
 
   .nav-links button,
   .nav-links .button {
-    padding: 8px 24px;
     height: 50px;
     font-size: 1rem;
     font-weight: 600;
     border-radius: 8px;
-    width: 328px;
     text-align: center;
   }
 
