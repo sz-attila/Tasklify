@@ -1,15 +1,31 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useAuth } from "../context/AuthContext";
 import Button from "./Button";
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { state, dispatch } = useAuth();
   const pathname = usePathname();
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      dispatch({ type: "LOGIN", payload: token });
+    }
+  }, [dispatch]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    dispatch({ type: "LOGOUT" });
+    router.push("/");
   };
 
   return (
@@ -27,10 +43,7 @@ const Navbar = () => {
         </div>
         <ul className={`nav-links ${isMenuOpen ? "active" : ""}`}>
           <li>
-            <Link
-              href="/tasks"
-              className={pathname === "/tasks" ? "active" : ""}
-            >
+            <Link href="/task" className={pathname === "/task" ? "active" : ""}>
               TEENDŐIM
             </Link>
           </li>
@@ -42,9 +55,17 @@ const Navbar = () => {
               DASHBOARD
             </Link>
           </li>
-          <Link href="/">
-            <Button className="button">BEJELENTKEZÉS</Button>
-          </Link>
+          <div className="button-div">
+            {state.isAuthenticated ? (
+              <button className="button-logout" onClick={handleLogout}>
+                KIJELENTKEZÉS
+              </button>
+            ) : (
+              <Link href="/">
+                <Button className="button">BEJELENTKEZÉS</Button>
+              </Link>
+            )}
+          </div>
         </ul>
       </div>
     </nav>
