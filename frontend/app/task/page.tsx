@@ -126,9 +126,16 @@ const TaskPage = () => {
 
   return (
     <div className="task-page">
-      <div className="task-header">
-        <h1>TEENDŐIM</h1>
-        <Button onClick={() => router.push("/add-task")}>ÚJ FELADAT</Button>
+      <div className="task-content">
+        <div className="task-header">
+          <h1>TEENDŐIM</h1>
+          <p>Elvégzendő feladataidat itt tudod hozzáadni.</p>
+        </div>
+        <div className="task-button">
+          <Button onClick={() => router.push("/add-task")} className="button">
+            ÚJ FELADAT
+          </Button>
+        </div>
       </div>
       <div className="task-filters">
         <input
@@ -140,16 +147,20 @@ const TaskPage = () => {
         <div>
           <input
             type="checkbox"
+            id="inProgress"
+            className="custom-checkbox"
             checked={showInProgress}
             onChange={() => setShowInProgress((prev) => !prev)}
           />
-          <label>Folyamatban</label>
+          <label htmlFor="inProgress">Folyamatban</label>
           <input
             type="checkbox"
+            id="completed"
+            className="custom-checkbox"
             checked={showCompleted}
             onChange={() => setShowCompleted((prev) => !prev)}
           />
-          <label>Kész</label>
+          <label htmlFor="completed">Kész</label>
         </div>
       </div>
       <TaskList

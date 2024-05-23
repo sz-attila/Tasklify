@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 interface Task {
   _id: string;
@@ -30,10 +31,16 @@ const TaskList: React.FC<TaskListProps> = ({
             <div key={task._id} className="task-item">
               <input
                 type="checkbox"
+                id={`task-${task._id}`}
+                className="custom-checkbox"
                 checked={task.completed}
                 onChange={() => onStatusChange(task._id, !task.completed)}
               />
-              <span>{task.title}</span>
+              <label htmlFor={`task-${task._id}`} className="task-label">
+                <Link href={`/task/${task._id}`}>
+                  <span className="task-link">{task.title}</span>
+                </Link>
+              </label>
             </div>
           ))}
       </div>
@@ -45,10 +52,16 @@ const TaskList: React.FC<TaskListProps> = ({
             <div key={task._id} className="task-item">
               <input
                 type="checkbox"
+                id={`task-${task._id}`}
+                className="custom-checkbox"
                 checked={task.completed}
                 onChange={() => onStatusChange(task._id, !task.completed)}
               />
-              <span>{task.title}</span>
+              <label htmlFor={`task-${task._id}`} className="task-label">
+                <Link href={`/task/${task._id}`}>
+                  <span className="completed-task">{task.title}</span>
+                </Link>
+              </label>
             </div>
           ))}
       </div>
