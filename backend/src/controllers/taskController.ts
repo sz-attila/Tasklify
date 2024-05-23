@@ -61,3 +61,15 @@ export const getTaskById = async (req: Request, res: Response) => {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
+export const updateTaskStatus = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const { completed } = req.body;
+
+  try {
+    const task = await Task.findByIdAndUpdate(id, { completed }, { new: true });
+    res.status(200).json(task);
+  } catch (error) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+};

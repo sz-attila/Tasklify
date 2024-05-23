@@ -386,3 +386,90 @@ nav .button-logout:hover {
   background-color: transparent;
   text-decoration: none;
 }
+
+/*Task page styles*/
+
+.task-page {
+  padding: 20px;
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.task-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.task-filters input[type="text"] {
+  padding: 8px;
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  width: 300px;
+}
+
+.task-filters input[type="checkbox"] {
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+.task-columns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.task-column {
+  width: 45%;
+}
+
+.task-column h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.task-item input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/*Add task page style*/
+
+.add-task-container {
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.add-task-container h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.add-task-container p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.add-task-container input,
+.add-task-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+}
+
+.add-task-container textarea {
+  height: 150px;
+}
