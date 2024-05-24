@@ -32,11 +32,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className={isMenuOpen ? "active" : ""}>
-      <div
-        className={`nav-container ${isMenuOpen ? "active" : ""} ${
-          isModalOpen ? "blurred" : ""
-        }`}
-      >
+      <div className={`nav-container ${isModalOpen ? "blurred" : ""}`}>
         <div className="nav-logo">
           <img src="/logo2.svg" alt="Taskify Logo" />
           <span>TASKLIFY</span>
@@ -47,7 +43,7 @@ const Navbar: React.FC = () => {
             />
           </div>
         </div>
-        <ul className="nav-links">
+        <ul className={`nav-links ${isMenuOpen ? "active" : ""}`}>
           <li>
             <Link href="/task" className={pathname === "/task" ? "active" : ""}>
               TEENDŐIM

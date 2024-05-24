@@ -128,7 +128,7 @@ nav .button:hover {
   border: 2px solid var(--primary-color);
   cursor: pointer;
   color: var(--primary-color);
-  background-color: transparent;
+  background-color: var(--white-color);
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -168,46 +168,58 @@ nav .button:hover {
     flex-direction: column;
     align-items: flex-start;
     display: none;
-    padding: 20px 0 20px 0;
+    padding: 20px 0 20px 10px;
   }
 
   .nav-links.active {
     display: flex;
-    background-color: #ccdbdb;
+    background-color: var(--green-color);
   }
 
-  .nav-links li a {
-    color: var(--text-color);
-    padding: 30px;
+  .nav-links.active .button-logout {
+    display: flex;
     width: 100%;
+  }
+
+  .nav-links.active .button button {
+    display: flex;
+    width: 100%;
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
+
+  .nav-links a {
+    padding-left: 20px;
+    color: var(--text-color);
+  }
+
+  .nav-links .button button {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    height: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-align: center;
   }
 
   .nav-links .button-logout {
     background-color: var(--white-color);
     color: var(--primary-color);
-  }
-
-  .nav-links button {
-    background-color: var(--primary-color);
-    color: var(--white-color);
-    width: 100%;
-  }
-
-  .button-div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-width: 100%;
-    padding: 10px 30px 10px 30px;
-  }
-
-  .nav-links button,
-  .nav-links .button {
     height: 50px;
-    font-size: 1rem;
+    font-size: 16px;
     font-weight: 600;
     border-radius: 8px;
     text-align: center;
+  }
+
+  .nav-container .button-div {
+    width: 100%;
+    display: flex;
+    padding: 0 20px 0 20px;
+    justify-content: center;
   }
 
   .nav-links button:hover {
@@ -246,7 +258,7 @@ nav .button:hover {
   margin-bottom: 40px;
 }
 
-.login-container .login-container p {
+.login-container p {
   font-size: 16px;
   text-align: center;
   line-height: 24px;
@@ -320,7 +332,7 @@ nav .button:hover {
 .register-div button,
 .register-div a.button {
   padding: 8px 24px 8px 24px;
-  margin-top: 20px;
+  margin-top: 54px;
   height: 50px;
   font-size: 16px;
   font-weight: 600;
@@ -349,7 +361,6 @@ nav .button:hover {
 
 .register-div p {
   font-size: 16px;
-  margin: 54px 0 16px;
   color: var (--text-color);
 }
 
@@ -408,6 +419,12 @@ nav .button:hover {
 
 .login-container .logged-out-header {
   text-decoration: none;
+}
+
+.login-container .registration-link button {
+  color: var(--primary-color);
+  background-color: var(--white-color);
+  border: 2px solid var(--primary-color);
 }
 
 .task-filters {
