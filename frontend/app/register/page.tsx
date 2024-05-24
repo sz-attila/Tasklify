@@ -1,70 +1,88 @@
 "use client";
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import Button from "../../components/Button";
 
-const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const pathname = usePathname();
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Button from "@/components/Button";
+
+const RegisterPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const router = useRouter();
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    setIsLoggedIn(!!token);
-  }, []);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    setIsLoggedIn(false);
-    router.push("/");
+      if (!response.ok) {
+        throw new Error("Registration failed");
+      }
+
+      const data = await response.json();
+      console.log("Registration successful:", data);
+      router.push("/");
+    } catch (error) {
+      console.error("Error registering:", error);
+      alert("Registration failed, please try again.");
+    }
   };
 
   return (
-    <nav className={isMenuOpen ? "active" : ""}>
-      <div className="nav-container">
-        <div className="nav-logo">
-          <img src="/logo2.svg" alt="Taskify Logo" />
-          <span>TASKLIFY</span>
-          <div className="nav-menu-icon" onClick={toggleMenu}>
-            <img
-              src={isMenuOpen ? "/cross.svg" : "/menu.svg"}
-              alt="Menu Icon"
-            />
+    <div className="login-container">
+      <h1>REGISZTRÁCIÓ</h1>
+      <p>
+        Adataid megadása után, már is <br /> létrehozhatod teendőidet.
+      </p>
+      <div className="login-form">
+        <form onSubmit={handleSubmit}>
+          <div>
+            <div>
+              <input
+                type="email"
+                id="email"
+                placeholder="E-mail cím"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div>
+              <input
+                type="password"
+                id="password"
+                placeholder="Jelszó"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <div>
+              <input
+                type="password"
+                id="confirm-password"
+                placeholder="Jelszó mégegyszer"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+            </div>
           </div>
-        </div>
-        <ul className={`nav-links ${isMenuOpen ? "active" : ""}`}>
-          <li>
-            <Link href="/task" className={pathname === "/task" ? "active" : ""}>
-              TEENDŐIM
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/dashboard"
-              className={pathname === "/dashboard" ? "active" : ""}
-            >
-              DASHBOARD
-            </Link>
-          </li>
-          {isLoggedIn ? (
-            <button className="button-logout" onClick={handleLogout}>
-              KIJELENTKEZÉS
-            </button>
-          ) : (
-            <Link href="/">
-              <Button className="button">BEJELENTKEZÉS</Button>
-            </Link>
-          )}
-        </ul>
+          <div className="register-div">
+            <Button type="submit">REGISZTRÁLOK</Button>
+          </div>
+        </form>
       </div>
-    </nav>
+    </div>
   );
 };
 
-export default Navbar;
+export default RegisterPage;
