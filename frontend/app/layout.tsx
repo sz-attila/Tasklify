@@ -1,6 +1,7 @@
-import "../styles/globals.css";
-import Navbar from "../components/Navbar";
+import "@/styles/globals.css";
+import Navbar from "@/components/Navbar";
 import { AuthProvider } from "@/context/AuthContext";
+import { ModalProvider } from "@/context/ModalContext";
 
 export default function RootLayout({
   children,
@@ -9,12 +10,14 @@ export default function RootLayout({
 }) {
   return (
     <AuthProvider>
-      <html>
-        <body>
-          <Navbar />
-          {children}
-        </body>
-      </html>
+      <ModalProvider>
+        <html>
+          <body>
+            <Navbar />
+            {children}
+          </body>
+        </html>
+      </ModalProvider>
     </AuthProvider>
   );
 }

@@ -3,11 +3,13 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "../context/AuthContext";
+import { useModal } from "../context/ModalContext";
 import Button from "./Button";
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { state, dispatch } = useAuth();
+  const { isModalOpen } = useModal();
   const pathname = usePathname();
   const router = useRouter();
 
@@ -30,7 +32,11 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className={isMenuOpen ? "active" : ""}>
-      <div className="nav-container">
+      <div
+        className={`nav-container ${isMenuOpen ? "active" : ""} ${
+          isModalOpen ? "blurred" : ""
+        }`}
+      >
         <div className="nav-logo">
           <img src="/logo2.svg" alt="Taskify Logo" />
           <span>TASKLIFY</span>
@@ -41,7 +47,7 @@ const Navbar: React.FC = () => {
             />
           </div>
         </div>
-        <ul className={`nav-links ${isMenuOpen ? "active" : ""}`}>
+        <ul className="nav-links">
           <li>
             <Link href="/task" className={pathname === "/task" ? "active" : ""}>
               TEENDŐIM

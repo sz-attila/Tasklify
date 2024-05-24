@@ -3,12 +3,14 @@ import { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import axios from "axios";
 import Link from "next/link";
-import Button from "../../../components/Button";
-import "../../../styles/globals.css";
+import Button from "@/components/Button";
+import "@/styles/globals.css";
+import { useModal } from "@/context/ModalContext";
 
 const EditTaskPage = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const { isModalOpen, openModal, closeModal } = useModal();
   const router = useRouter();
   const { taskId } = useParams();
 
@@ -72,6 +74,7 @@ const EditTaskPage = () => {
           Authorization: `Bearer ${token}`,
         },
       });
+      closeModal();
       router.push("/task");
     } catch (error) {
       console.error("Failed to delete task", error);
@@ -79,40 +82,74 @@ const EditTaskPage = () => {
   };
 
   return (
-    <div className="add-task-container">
-      <h1>FELADAT MÓDOSÍTÁSA</h1>
-      <p>
-        Ha megváltoztattad a feladat nevét, vagy leírását, ne felejtsd el
-        elmenteni.
-      </p>
-      <form onSubmit={handleUpdateTask}>
-        <input
-          type="text"
-          placeholder="Feladat címe"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-        <textarea
-          placeholder="Feladat leírása..."
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
-        />
-        <div className="button-group">
-          <Button type="submit">MENTÉS</Button>
-          <Link href="/task">
-            <Button type="button">VISSZA</Button>
-          </Link>
-          <Button
-            type="button"
-            onClick={handleDeleteTask}
-            className="delete-button"
-          >
-            TÖRLÉS
-          </Button>
+    <div>
+      {isModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h2>BIZTOS SZERETNÉD TÖRÖLNI A FELADATOT?</h2>
+            <p>
+              Törlés után már nem fogod visszaállítani, és kezelni az alábbi
+              teendőt.
+            </p>
+            <div className="button-group">
+              <Button
+                type="button"
+                onClick={closeModal}
+                className="button-undo"
+              >
+                MÉGSEM
+              </Button>
+              <Button
+                type="button"
+                onClick={handleDeleteTask}
+                className="delete-button"
+              >
+                TÖRLÉS
+              </Button>
+            </div>
+          </div>
         </div>
-      </form>
+      )}
+      <div
+        className={
+          isModalOpen ? "add-task-container blurred" : "add-task-container"
+        }
+      >
+        <h1>FELADAT MÓDOSÍTÁSA</h1>
+        <p>
+          Ha megváltoztattad a feladat nevét, vagy leírását, ne felejtsd el
+          elmenteni.
+        </p>
+        <form onSubmit={handleUpdateTask}>
+          <input
+            type="text"
+            placeholder="Feladat címe"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+          <textarea
+            placeholder="Feladat leírása..."
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          />
+          <Button type="submit" className="button">
+            MENTÉS
+          </Button>
+
+          <div className="button-group">
+            <Link href="/task">
+              <Button type="button" className="button-undo">
+                VISSZA
+              </Button>
+            </Link>
+            <Button type="button" onClick={openModal} className="delete-button">
+              TÖRLÉS
+            </Button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
