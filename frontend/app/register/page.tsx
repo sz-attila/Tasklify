@@ -41,7 +41,7 @@ const RegisterPage = () => {
 
   return (
     <div className="login-container">
-      <h1>REGISZTRÁCIÓ</h1>
+      <h1 className="login-header">REGISZTRÁCIÓ</h1>
       <p>
         Adataid megadása után, már is <br /> létrehozhatod teendőidet.
       </p>
@@ -77,7 +77,9 @@ const RegisterPage = () => {
             </div>
           </div>
           <div className="register-div">
-            <Button type="submit">REGISZTRÁLOK</Button>
+            <Button type="submit" className="button">
+              REGISZTRÁLOK
+            </Button>
           </div>
         </form>
       </div>

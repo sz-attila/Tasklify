@@ -137,7 +137,6 @@ const EditTaskPage = () => {
           <Button type="submit" className="button">
             MENTÉS
           </Button>
-
           <div className="button-group">
             <Link href="/task">
               <Button type="button" className="button-undo">

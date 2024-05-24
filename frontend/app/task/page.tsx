@@ -105,7 +105,7 @@ const TaskPage = () => {
   if (!isAuthenticated) {
     return (
       <div className="login-container">
-        <h1>AZ OLDAL ELÉRÉSÉHEZ JELENTKEZZ BE.</h1>
+        <h1 className="logout-header">AZ OLDAL ELÉRÉSÉHEZ JELENTKEZZ BE.</h1>
         <div className="submit-div">
           <Link href="/">
             <Button type="button">BEJELENTKEZÉS</Button>

@@ -54,10 +54,14 @@ const AddTaskPage = () => {
           onChange={(e) => setDescription(e.target.value)}
           required
         />
-        <div className="button-group">
-          <Button type="submit">HOZZÁAD</Button>
+        <div className="add-task-button">
+          <Button type="submit" className="button">
+            HOZZÁAD
+          </Button>
           <Link href="/task">
-            <Button type="button">VISSZA A TEENDŐKHÖZ</Button>
+            <Button type="button" className="button-cancel">
+              VISSZA A TEENDŐKHÖZ
+            </Button>
           </Link>
         </div>
       </form>

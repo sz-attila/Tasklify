@@ -35,7 +35,7 @@ export default function LoginPage() {
 
   return (
     <div className="login-container">
-      <h1>BEJELENTKEZÉS</h1>
+      <h1 className="login-header">BEJELENTKEZÉS</h1>
       <p>Jelentkezz be a teendőid kezeléséhez</p>
       <div className="login-form">
         <form onSubmit={handleSubmit}>
@@ -52,7 +52,7 @@ export default function LoginPage() {
             <input
               type="password"
               id="password"
-              placeholder="********"
+              placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -62,12 +62,12 @@ export default function LoginPage() {
           </Link>
           <div className="submit-div">
             <Button type="submit">BEJELENTKEZÉS</Button>
+          </div>
+          <div className="registration-link">
             <p>Még nincs fiókod?</p>
-            <div className="registration-link">
-              <Link href="/register">
-                <Button type="button">REGISZTRÁLJ</Button>
-              </Link>
-            </div>
+            <Link href="/register">
+              <Button type="button">REGISZTRÁLJ</Button>
+            </Link>
           </div>
         </form>
       </div>
