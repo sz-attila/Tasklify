@@ -35,11 +35,14 @@ const AddTaskPage = () => {
 
   return (
     <div className="add-task-container">
-      <h1>ÚJ FELADAT</h1>
-      <p>
-        Add meg a feladat nevét és leírását, majd add hozzá a folyamatban lévő
-        teendők közé.
-      </p>
+      <div className="task-header">
+        <h1>ÚJ FELADAT</h1>
+        <p>
+          Add meg a feladat nevét és leírását, majd add hozzá a folyamatban lévő
+          teendők közé.
+        </p>
+      </div>
+
       <form onSubmit={handleAddTask}>
         <input
           type="text"

@@ -25,6 +25,7 @@ const TaskList: React.FC<TaskListProps> = ({
     <div className="task-columns">
       <div className="task-column">
         <h2>Folyamatban ({inProgressCount})</h2>
+        <hr />
         {tasks
           .filter((task) => !task.completed)
           .map((task) => (
@@ -46,6 +47,7 @@ const TaskList: React.FC<TaskListProps> = ({
       </div>
       <div className="task-column">
         <h2>Kész ({completedCount})</h2>
+        <hr />
         {tasks
           .filter((task) => task.completed)
           .map((task) => (

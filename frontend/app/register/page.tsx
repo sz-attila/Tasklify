@@ -41,10 +41,12 @@ const RegisterPage = () => {
 
   return (
     <div className="login-container">
-      <h1 className="login-header">REGISZTRÁCIÓ</h1>
-      <p>
-        Adataid megadása után, már is <br /> létrehozhatod teendőidet.
-      </p>
+      <div className="task-header">
+        <h1 className="login-header">REGISZTRÁCIÓ</h1>
+        <p>
+          Adataid megadása után, már is <br /> létrehozhatod teendőidet.
+        </p>
+      </div>
       <div className="login-form">
         <form onSubmit={handleSubmit}>
           <div>

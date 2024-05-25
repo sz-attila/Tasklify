@@ -115,11 +115,14 @@ const EditTaskPage = () => {
           isModalOpen ? "add-task-container blurred" : "add-task-container"
         }
       >
-        <h1>FELADAT MÓDOSÍTÁSA</h1>
-        <p>
-          Ha megváltoztattad a feladat nevét, vagy leírását, ne felejtsd el
-          elmenteni.
-        </p>
+        <div className="task-header">
+          <h1>FELADAT MÓDOSÍTÁSA</h1>
+          <p>
+            Ha megváltoztattad a feladat nevét, vagy leírását, ne felejtsd el
+            elmenteni.
+          </p>
+        </div>
+
         <form onSubmit={handleUpdateTask}>
           <input
             type="text"

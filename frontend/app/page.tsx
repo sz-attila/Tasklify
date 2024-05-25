@@ -35,8 +35,11 @@ export default function LoginPage() {
 
   return (
     <div className="login-container">
-      <h1 className="login-header">BEJELENTKEZÉS</h1>
-      <p>Jelentkezz be a teendőid kezeléséhez</p>
+      <div className="task-header">
+        <h1 className="login-header">BEJELENTKEZÉS</h1>
+        <p>Jelentkezz be a teendőid kezeléséhez</p>
+      </div>
+
       <div className="login-form">
         <form onSubmit={handleSubmit}>
           <div>

@@ -57,17 +57,19 @@ const Navbar: React.FC = () => {
               DASHBOARD
             </Link>
           </li>
-          <div className="button-div">
-            {state.isAuthenticated ? (
-              <button className="button-logout" onClick={handleLogout}>
-                KIJELENTKEZÉS
-              </button>
-            ) : (
-              <Link href="/">
-                <Button className="button">BEJELENTKEZÉS</Button>
-              </Link>
-            )}
-          </div>
+          <li>
+            <div className="button-div">
+              {state.isAuthenticated ? (
+                <button className="button-logout" onClick={handleLogout}>
+                  KIJELENTKEZÉS
+                </button>
+              ) : (
+                <Link href="/">
+                  <Button className="button">BEJELENTKEZÉS</Button>
+                </Link>
+              )}
+            </div>
+          </li>
         </ul>
       </div>
     </nav>
