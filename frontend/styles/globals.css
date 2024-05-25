@@ -714,3 +714,92 @@ nav .button:hover {
 .modal-content .button-undo {
   width: 100%;
 }
+
+/* Dashboard page styles */
+
+.dashboard-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.task-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.charts-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.chart {
+  flex: 1;
+  min-width: 300px;
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+}
+
+.custom-legend {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding-right: 20px;
+}
+
+.custom-legend ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.custom-legend li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.task-header {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.legend-color-box {
+  width: 20px;
+  height: 20px;
+  border-radius: 8px;
+  margin-right: 10px;
+}
+
+.bar-chart-container {
+  width: 100%;
+}
+
+.pie-chart-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pie-chart {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .custom-legend {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    vertical-align: middle;
+    align-items: center;
+    padding-right: 0;
+  }
+
+  .task-header {
+    text-align: center;
+  }
+}
