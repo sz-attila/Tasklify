@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Button from "@/components/Button";
 
 const RegisterPage = () => {
@@ -13,7 +15,10 @@ const RegisterPage = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      alert("Passwords do not match");
+      toast.error("Passwords do not match", {
+        position: "top-center",
+        autoClose: 3000,
+      });
       return;
     }
 
@@ -32,15 +37,25 @@ const RegisterPage = () => {
 
       const data = await response.json();
       console.log("Registration successful:", data);
-      router.push("/");
+      toast.success("Registration successful!", {
+        position: "top-center",
+        autoClose: 2000,
+      });
+      setTimeout(() => {
+        router.push("/");
+      }, 2000);
     } catch (error) {
       console.error("Error registering:", error);
-      alert("Registration failed, please try again.");
+      toast.error("Registration failed, please try again.", {
+        position: "top-center",
+        autoClose: 3000,
+      });
     }
   };
 
   return (
     <div className="login-container">
+      <ToastContainer />
       <div className="task-header">
         <h1 className="login-header">REGISZTRÁCIÓ</h1>
         <p>

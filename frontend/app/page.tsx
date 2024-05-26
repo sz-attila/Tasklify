@@ -1,8 +1,11 @@
 "use client";
+
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "../context/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Button from "../components/Button";
 import "../styles/globals.css";
 
@@ -24,17 +27,29 @@ export default function LoginPage() {
         const data = await response.json();
         localStorage.setItem("token", data.token);
         dispatch({ type: "LOGIN", payload: data.token });
+        toast.success("Login successful!", {
+          position: "top-center",
+          autoClose: 3000,
+        });
         router.push("/task");
       } else {
-        console.error("Login failed");
+        toast.error("Login failed. Please check your credentials.", {
+          position: "top-center",
+          autoClose: 3000,
+        });
       }
     } catch (error) {
       console.error("An error occurred", error);
+      toast.error("An error occurred. Please try again later.", {
+        position: "top-center",
+        autoClose: 3000,
+      });
     }
   };
 
   return (
     <div className="login-container">
+      <ToastContainer />
       <div className="task-header">
         <h1 className="login-header">BEJELENTKEZÉS</h1>
         <p>Jelentkezz be a teendőid kezeléséhez</p>
