@@ -2,6 +2,8 @@ import cors from "cors";
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import swaggerJsdoc from "swagger-jsdoc";
+import swaggerUi from "swagger-ui-express";
 import authRoutes from "./routes/auth";
 import taskRoutes from "./routes/tasks";
 
@@ -9,6 +11,26 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+const swaggerOptions = {
+  swaggerDefinition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Tasklify API",
+      version: "1.0.0",
+      description: "API documentation for Tasklify",
+    },
+    servers: [
+      {
+        url: `http://localhost:${PORT}`,
+      },
+    ],
+  },
+  apis: ["./src/routes/*.ts", "./src/controllers/*.ts"],
+};
+
+const swaggerDocs = swaggerJsdoc(swaggerOptions);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use(cors());
 app.use(express.json());
